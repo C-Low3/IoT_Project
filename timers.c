@@ -43,18 +43,22 @@ void delay_uS(uint16_t usec){
 }
 
 /************************************************************************************
- * Initilizes TimerA in P2.4 (A0.1)
+ * Initilizes
+ *      TimerA in P6.6 (A2.3)  For Motor
+ *      TimerA in P6.7 (A2.4)  For Door (servo)
  * If changing pin to timer Ax.y: Timer_Ax, CCTL[y], CCR[y]
  ***********************************************************************************/
-void initTimerAPWMPin(){
-    P2SEL0 |=  BIT4;    //TimerA(2.2)
-    P2SEL1 &=~ BIT4;
-    P2DIR |= BIT4;      //Output
-    TIMER_A0->CTL = 0;
-    TIMER_A0->CCR[0] = 60000-1;                     //20ms period
-    TIMER_A0->CCTL[1] = TIMER_A_CCTLN_OUTMOD_7;
-    TIMER_A0->CCR[1] = 0;                       //initial 50% duty cycle
-    TIMER_A0->CTL = 0x0214;
+void initTimerA_PWM(){
+    P6SEL0 |=  0xC0;    //set both pins to timerA
+    P6SEL1 &=~ 0xC0;
+    P6DIR |= 0xC0;      //Output
+    TIMER_A2->CTL = 0;
+    TIMER_A2->CCR[0] = 60000-1;                     //20ms period
+    TIMER_A2->CCTL[3] = TIMER_A_CCTLN_OUTMOD_7;
+    TIMER_A2->CCR[3] = 0;
+    TIMER_A2->CCTL[4] = TIMER_A_CCTLN_OUTMOD_7;
+    TIMER_A2->CCR[4] = 0;
+    TIMER_A2->CTL = 0x0214;
 }
 
 /************************************************************************************
@@ -62,5 +66,5 @@ void initTimerAPWMPin(){
  * Param: pulse number 0-100 representing power of motor in %
  ***********************************************************************************/
 void timerA_PWM(uint16_t pulse, uint8_t subT){
-    TIMER_A0->CCR[subT] = pulse*600;
+    TIMER_A2->CCR[subT] = pulse*60 + 3000;
 }
