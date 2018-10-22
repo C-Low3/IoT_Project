@@ -16,6 +16,12 @@ keypad.obj: C:/ti/ccsv8/ccs_base/arm/include/CMSIS/core_cm4.h
 keypad.obj: C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_compiler.h
 keypad.obj: C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_ccs.h
 keypad.obj: C:/ti/ccsv8/ccs_base/arm/include/system_msp432p401r.h
+keypad.obj: ../timers.h
+keypad.obj: ../keypad.h
+keypad.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/include/stdio.h
+keypad.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/include/_ti_config.h
+keypad.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/include/linkage.h
+keypad.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/include/stdarg.h
 
 ../keypad.c: 
 C:/ti/ccsv8/ccs_base/arm/include/msp.h: 
@@ -33,3 +39,9 @@ C:/ti/ccsv8/ccs_base/arm/include/CMSIS/core_cm4.h:
 C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_compiler.h: 
 C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_ccs.h: 
 C:/ti/ccsv8/ccs_base/arm/include/system_msp432p401r.h: 
+../timers.h: 
+../keypad.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/include/stdio.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/include/_ti_config.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/include/linkage.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/include/stdarg.h: 

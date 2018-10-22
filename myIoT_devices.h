@@ -11,6 +11,12 @@
 void openDoor(void);
 void closeDoor(void);
 
+void runFan(uint16_t);
+void stopFan(void);
+void blueLED(uint8_t dc);
+void greenLED(uint8_t dc);
+void redLED(uint8_t dc);
 
+void initLEDs(void);
 
 #endif /* MYIOT_DEVICES_H_ */

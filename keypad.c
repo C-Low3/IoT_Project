@@ -1,4 +1,7 @@
 #include "msp.h"
+#include "timers.h"
+#include "keypad.h"
+#include <stdio.h>
 
 /*
  * keypad.c
@@ -66,44 +69,6 @@ uint8_t readKeypad(){
     return num;
 }
 
-/********************************************************************************
- * Collects a 3 digit pulse and returns it
- *******************************************************************************/
-uint16_t collectPulse(){
-    uint16_t pin = 0;      //PIN
-    uint16_t pressed = 0;  //key pressed
-    uint8_t count = 0;     //flag
-
-    while (1){
-        if(pressed = readKeypad()){   //read number
-            displayKeypad(pressed);          //prints out button press
-            delay_mS(25);              //secondary bounce
-            count++;
-
-            if (pressed < 10){
-                pin = pin * 10 + pressed;
-            }
-            else if (pressed == 10){
-                printf("Please enter only digit 0-9\n");
-                count--;
-            }
-            else if (pressed == 11){
-                pin = pin * 10 + 0;
-                count++;
-            }
-            else if (pressed == 12){
-                if (count < 4){
-                    count = 0;
-                    pressed = 0;
-                    pin = 0;
-                }
-                else
-                    return pin %= 1000;
-            }
-        }
-    }
-}
-
 /*********************************************************
  * Displays the key pressed to the console
  *********************************************************/
@@ -119,6 +84,48 @@ void displayKeypad(uint8_t num){
     else
         printf("unrecognized key");
 }
+
+/********************************************************************************
+ * Collects a 3 digit pulse and returns it
+ *******************************************************************************/
+uint16_t collectPulse(){
+    uint16_t pulse = 0;      //PIN
+    uint8_t pressed = 0;  //key pressed
+    uint8_t count = 0;     //flag
+
+    while (1){
+        if(pressed = readKeypad()){   //read number
+            displayKeypad(pressed);          //prints out button press
+            delay_mS(10);              //secondary bounce
+            count++;
+
+            if (pressed < 10){
+                pulse = pulse * 10 + pressed;
+            }
+            else if (pressed == 10){
+                printf("Please enter only digit 0-9\n");
+                count--;
+            }
+            else if (pressed == 11){
+                pulse = pulse * 10 + 0;
+                count++;
+            }
+            else if (pressed == 12){
+                if (count < 3){
+                    count = 0;
+                    pressed = 0;
+                    pulse = 0;
+                }
+                else{
+                    printf("current pulse: %d \n",pulse % 100);
+                    return pulse %= 100;
+                }
+            }
+        }
+    }
+}
+
+
 
 
 

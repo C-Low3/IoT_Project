@@ -16,6 +16,7 @@ timers.obj: C:/ti/ccsv8/ccs_base/arm/include/CMSIS/core_cm4.h
 timers.obj: C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_compiler.h
 timers.obj: C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_ccs.h
 timers.obj: C:/ti/ccsv8/ccs_base/arm/include/system_msp432p401r.h
+timers.obj: ../timers.h
 
 ../timers.c: 
 C:/ti/ccsv8/ccs_base/arm/include/msp.h: 
@@ -33,3 +34,4 @@ C:/ti/ccsv8/ccs_base/arm/include/CMSIS/core_cm4.h:
 C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_compiler.h: 
 C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_ccs.h: 
 C:/ti/ccsv8/ccs_base/arm/include/system_msp432p401r.h: 
+../timers.h: 

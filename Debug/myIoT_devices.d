@@ -16,6 +16,8 @@ myIoT_devices.obj: C:/ti/ccsv8/ccs_base/arm/include/CMSIS/core_cm4.h
 myIoT_devices.obj: C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_compiler.h
 myIoT_devices.obj: C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_ccs.h
 myIoT_devices.obj: C:/ti/ccsv8/ccs_base/arm/include/system_msp432p401r.h
+myIoT_devices.obj: ../myIoT_devices.h
+myIoT_devices.obj: ../timers.h
 
 ../myIoT_devices.c: 
 C:/ti/ccsv8/ccs_base/arm/include/msp.h: 
@@ -33,3 +35,5 @@ C:/ti/ccsv8/ccs_base/arm/include/CMSIS/core_cm4.h:
 C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_compiler.h: 
 C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_ccs.h: 
 C:/ti/ccsv8/ccs_base/arm/include/system_msp432p401r.h: 
+../myIoT_devices.h: 
+../timers.h: 
