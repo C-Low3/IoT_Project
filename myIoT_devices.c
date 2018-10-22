@@ -49,10 +49,11 @@ void stopFan(void){
  * LE
  */
 void initLEDs(){
-    P3SEL0 &=~ 0xC0;   //GPIO
-    P3SEL1 &=~ 0xC0;
-    P3DIR  |=  0xC0;    //Output
-    P3OUT  &=~ 0xC0;
+    P6SEL0 &=~ 0x30;   //GPIO
+    P6SEL1 &=~ 0x30;
+    P6DIR  |=  0x30;    //Output
+    P6OUT  &=~ 0x30;
+
 }
 
 
@@ -62,8 +63,9 @@ void initLEDs(){
  **********************************************************************/
 void openDoor(){
     TIMER_A2->CCR[4] = 3000 + 3000;
-    P3OUT  &=~ 0x40;
-    P3OUT  |=  0x80;
+    P6OUT  &=~ 0x10;
+    P6OUT  |=  0x20;
+
 
 }
 
@@ -73,6 +75,6 @@ void openDoor(){
  **********************************************************************/
 void closeDoor(){
     TIMER_A2->CCR[4] = 3000;
-    P3OUT  |=  0x40;
-    P3OUT  &=~ 0x80;
+    P6OUT  |=  0x10;
+    P6OUT  &=~ 0x20;
 }

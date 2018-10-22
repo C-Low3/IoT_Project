@@ -26,12 +26,14 @@ int main(void){
 
 	while (1){
 
-
+	    runFan(50);
 	    mainMenu();
 	    openDoor();
 	    delay_mS(3000);
 	    closeDoor();
 	    delay_mS(3000);
+	    stopFan();
+	    blueLED(50);
 
 	}
 
