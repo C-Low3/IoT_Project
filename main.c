@@ -17,25 +17,34 @@
 int main(void){
 	WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;		// stop watchdog timer
 
-	initSystick();
-	initKeypad();
-	initLCD();
+	initSystick();      //Systic Timer
+	initKeypad();       //Keypad
+	initLCD();          //LCD Display
 	initTimerA_PWM();   //Fan and Servo
-	initLEDs();
+	initDoorLEDs();     //Door LEDs
+	initE_Stop();       //Emergency stop for fan
 
+	NVIC_EnableIRQ(PORT3_IRQn);
+	__enable_interrupt();
 
+	runFan(50);
 	while (1){
 
-	    runFan(50);
 	    mainMenu();
-	    openDoor();
-	    delay_mS(3000);
-	    closeDoor();
-	    delay_mS(3000);
-	    stopFan();
-	    blueLED(50);
+	    if (P3IN & BIT7)
+	        printf("high\n");
+	    else
+	        printf("low\n");
 
 	}
 
+}
 
+void PORT3_IRQHandler(){
+     if (P3->IFG &=~ BIT7){
+//       // TIMER_A2->CCR[3] = 1; //no pulse for fan
+        printf("trigered\n");
+      }
+      P3->IFG &=~ BIT7;
+      printf("cleared\n");
 }

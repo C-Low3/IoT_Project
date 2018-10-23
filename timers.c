@@ -46,9 +46,11 @@ void delay_uS(uint16_t usec){
  *      TimerA in P6.7 (A2.4)  For Door (servo)
  *      TimerA in P2.4 - 2.7   (A0.1-A0.4)  For RGB Lights
  *      Both run at 50Hz
- * If changing pin to timer Ax.y: Timer_Ax, CCTL[y], CCR[y]
+ * If changing timer pin Ax.y: Timer_Ax, CCTL[y], CCR[y]
  ***********************************************************************/
 void initTimerA_PWM(){
+
+    //Initializes the pins for the fan and the servo
     P6SEL0 |=  0xC0;    //set both pins to timerA
     P6SEL1 &=~ 0xC0;
     P6DIR  |= 0xC0;      //Output
@@ -60,6 +62,7 @@ void initTimerA_PWM(){
     TIMER_A2->CCR[4] = 0;
     TIMER_A2->CTL = 0x0214;
 
+    //Initializes the Pins for the RGB Light
     P2SEL0 |=  0xF0;    //set P2 timerA
     P2SEL1 &=~ 0xF0;
     P2DIR  |= 0xF0;      //Output

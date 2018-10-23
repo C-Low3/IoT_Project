@@ -17,6 +17,7 @@ void blueLED(uint8_t dc);
 void greenLED(uint8_t dc);
 void redLED(uint8_t dc);
 
-void initLEDs(void);
+void initDoorLEDs(void);
+void initE_Stop();
 
 #endif /* MYIOT_DEVICES_H_ */
