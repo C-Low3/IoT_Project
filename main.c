@@ -6,8 +6,6 @@
 #include "fan.h"
 #include "door.h"
 
-void testAll(void);
-
 void door(void);
 void lights(void);
 void motor(void);
@@ -33,9 +31,7 @@ void motor(void);
 
     uint8_t pressed = 0;
 
-
 	while(1){
-
 	    mainMenu();
 	    while (!(pressed = readKeypad()));
         if (pressed == 1){
@@ -49,39 +45,74 @@ void motor(void);
         }
         else{
             invalidKey();
-            delay_mS(3000);
         }
-
-
-
 	}
-
-
 }
 
 
  void door(){
-     int p = 0;
-     doorMenu();
-     while (!(p = readKeypad()));
-     if (p == 1 )
-         openDoor();
-     else if (p == 2)
-         closeDoor();
-     else{
-         invalidKey();
-         door();
-
+     while (1){
+         uint8_t pos = 0;
+         doorMenu();
+         while (!(pos = readKeypad()));
+         if (pos == 1 )
+             openDoor();
+         else if (pos == 2)
+             closeDoor();
+         else if (pos == 10)
+             return;
+         else{
+             invalidKey();
+         }
      }
 
  }
 
  void lights(){
+    uint8_t color = 0;
+    uint8_t dc = 0;
+    while (1){
 
- }
+        lightsMenu();
+        while (!(color = readKeypad()));
+        if (color == 10)
+            return;
+        else if (color > 3)
+            invalidKey();
+        else{
+            lightsPulseMenu();
+            dc = collectPulse();
+            if (color == 1 ){
+                pwmRed(dc);
+                display("Red is at       ",1);
+                displayPulse(dc);
+                delay_mS(3000);
+            }
+            else if (color == 2){
+                pwmGreen(dc);
+                display("Green is at     ",1);
+                displayPulse(dc);
+                delay_mS(3000);
+            }
+            else if (color == 3){
+                pwmBlue(dc);
+                display("Blue is at      ",1);
+                displayPulse(dc);
+                delay_mS(3000);
+            }
+        }
+    }
+}
 
- void motor(){
+void motor(){
+    uint8_t dc = 0;
 
+    motorPulseMenu();
+    dc = collectPulse();
+    runFan(dc);
+    display("Motor is at     ", 1);
+    displayPulse(dc);
+    delay_mS(3000);
  }
 
 /*****************************************************************
@@ -91,27 +122,4 @@ void motor(void);
      //if (P3->IFG & BIT7)  //dont believe this is neccessary
          TIMER_A2->CCR[3]  = 0;     //Stops Motor
      P3->IFG &=~ BIT7;          //Clear flag
- }
-
- void testAll(){
-     mainMenu();
-     runFan(50);
-     openDoor();
-     pwmBlue(50);
-     delay_mS(2000);
-     pwmRed(50);
-     doorMenu();
-     pwmBlue(0);
-     closeDoor();
-     delay_mS(2000);
-     pwmGreen(90);
-     pwmRed(0);
-     lightsMenu();
-     delay_mS(2000);
-     pwmGreen(50);
-     delay_mS(2000);
-     pwmGreen(20);
-     lightsMenu2();
-     delay_mS(2000);
-     pwmGreen(0);
  }

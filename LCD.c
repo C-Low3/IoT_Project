@@ -1,6 +1,9 @@
 #include "msp.h"
 #include "LCD.h"
 #include "timers.h"
+#include "string.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /*
  * LCD.c
@@ -126,33 +129,50 @@ void writeCommand(uint8_t cmd){
  *Scrolls a size 16 string accross the top row of the LCD
  *Param: char[16] string to be scrolled
  ****************************************************************************/
-void scroll(char word[],uint8_t line){
+void screenSaver(){
+
+    char word[16] = "GVSU            ";
     uint8_t i=0;
-    uint8_t c=0;         //Counter
-    writeCommand(0x01);  //Clears the Screen
-    writeCommand(0x0C);  //turns off Cursor
+    uint8_t c=0;
+    uint8_t line = 0;
+
+    writeCommand(1);  //Clears the Screen
 
 
-    //Prints the string repeatedly by removing the front most character
-    while (c <= 15){
-        writeCommand(0x80);
-        for (i=c;i<16;i++){
+    /* Intializes random number generator */
+    //srand(time(NULL));
+
+    line = rand() % 4;  //0 - 3
+    c = rand() % 12 + 1;    //1-12
+
+    printf("line: %d  c: %d\n",line,c);
+
+
+
+
+    writeCommand(0x0C);  //turns off Curosr
+
+    switch (line){       //moves cursor to the beginning of specified line
+    case 0:
+        line = 0x80; break;
+    case 1:
+        line = 0xC0; break;
+    case 2:
+        line = 0x90; break;
+    case 3:
+        line = 0xD0; break;
+    default:
+        break;
+    }
+
+    writeCommand(line + c);
+    //prints word
+        for (i=0;i<16;i++){
             writeData(word[i]);
             delay_uS(100);
         }
         delay_mS(1000);
-        c++;
-    }
-    //Prints the string by adding on character at the end and moving cursor
-    while (c > 0){
-        writeCommand(0x80 + c);
-        for (i = 0; i < 16-c ; i++){
-            writeData(word[i]);
-            delay_uS(100);
-        }
-        delay_mS(1000);
-        c--;
-    }
+
 }
 
 /*****************************************************************************
@@ -183,36 +203,52 @@ void display(char word[], uint8_t line){
     }
 }
 
+void displayDC(uint8_t num){
+    char text[16] = "                ";
+    char sNum[2];
+    sprintf(sNum, "%2d", num);
+    strncpy(text,sNum, 2);
+    display(text, 4);
+}
+
+void displayPulse(uint8_t pulse){
+    char text[16] = "  % Power       ";
+    char sNum[2];
+    sprintf(sNum, "%2d", pulse);
+    strncpy(text,sNum, 2);
+    display(text, 2);
+}
+
 void mainMenu(){
     display("      Menu      ",1);
     display(" 1 Door         ",2);
-    display(" 2 Motor        ",3);
-    display(" 3 Lights       ",4);
+    display(" 2 Lights       ",3);
+    display(" 3 Motor        ",4);
 }
 
 void doorMenu(){
     display("    Select      ",1);
     display(" 1 Open         ",2);
     display(" 2 Close        ",3);
-    display("                ",4);
+    display(" * Main Menu    ",4);
 }
-void motorMenu(){
+void motorPulseMenu(){
     display("Speed      0-99 ",1);
-    display("                ",2);
-    display("Followed by '#' ",3);
+    display("Followed by '#' ",2);
+    display("                ",3);
     display("                ",4);
 }
 void lightsMenu(){
-    display("Select a color  ",1);
+    display("Color '*'to Exit",1);
     display(" 1 Red          ",2);
     display(" 2 Green        ",3);
     display(" 3 Blue         ",4);
 }
 
-void lightsMenu2(){
+void lightsPulseMenu(){
     display("Brightness 0-99 ",1);
-    display("                ",2);
-    display("Followed by '#' ",3);
+    display("Followed by '#' ",2);
+    display("                ",3);
     display("                ",4);
 }
 
@@ -221,6 +257,7 @@ void invalidKey(){
     display("                ",2);
     display("Please enter a  ",3);
     display("Valid Number    ",4);
+    delay_mS(3000);
 }
 
 

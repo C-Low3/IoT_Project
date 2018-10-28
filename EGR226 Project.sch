@@ -4515,12 +4515,18 @@ by R. Vogg  15.March.2002</description>
 <part name="P+4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="SWITCH-TACTILE" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device=""/>
 <part name="SUPPLY8" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
+<part name="R2" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0204/5" value="100"/>
+<part name="R4" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0204/5" value="100"/>
+<part name="R5" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0204/7" value="160"/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 <text x="54.356" y="-64.516" size="1.778" layer="91">2N7000</text>
 <text x="33.782" y="-64.262" size="1.778" layer="91">2N7000</text>
+<text x="-22.86" y="43.18" size="1.778" layer="91" rot="R90">Blue</text>
+<text x="-17.78" y="43.18" size="1.778" layer="91" rot="R90">Red</text>
+<text x="-12.7" y="40.64" size="1.778" layer="91" rot="R90">Green</text>
 </plain>
 <moduleinsts>
 <moduleinst name="MSP432-1" module="MSP432" x="0" y="0"/>
@@ -4542,8 +4548,8 @@ by R. Vogg  15.March.2002</description>
 <instance part="SUPPLY5" gate="GND" x="-71.12" y="7.62" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-64.135" y="8.255" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="RGB_LED" gate="G$1" x="-17.78" y="50.8" smashed="yes">
-<attribute name="NAME" x="-20.32" y="51.562" size="1.778" layer="95"/>
+<instance part="RGB_LED" gate="G$1" x="-17.78" y="53.34" smashed="yes">
+<attribute name="NAME" x="-20.32" y="54.102" size="1.778" layer="95"/>
 </instance>
 <instance part="SUPPLY6" gate="GND" x="-22.86" y="60.96" rot="R180"/>
 <instance part="RED" gate="G$1" x="38.1" y="-53.34"/>
@@ -4564,6 +4570,15 @@ by R. Vogg  15.March.2002</description>
 <instance part="P+4" gate="1" x="58.42" y="-25.4"/>
 <instance part="SWITCH-TACTILE" gate="1" x="40.64" y="-7.62" rot="R270"/>
 <instance part="SUPPLY8" gate="GND" x="50.8" y="-7.62" rot="R90"/>
+<instance part="R2" gate="G$1" x="-22.86" y="35.56" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-26.162" y="39.37" size="1.778" layer="96" rot="R270"/>
+</instance>
+<instance part="R4" gate="G$1" x="-12.7" y="35.56" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-16.002" y="39.37" size="1.778" layer="96" rot="R270"/>
+</instance>
+<instance part="R5" gate="G$1" x="-17.78" y="35.56" smashed="yes" rot="R270">
+<attribute name="VALUE" x="-21.082" y="39.37" size="1.778" layer="96" rot="R270"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -4637,7 +4652,7 @@ by R. Vogg  15.March.2002</description>
 <segment>
 <pinref part="SUPPLY6" gate="GND" pin="GND"/>
 <pinref part="RGB_LED" gate="G$1" pin="A"/>
-<wire x1="-22.86" y1="58.42" x2="-22.86" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="-22.86" y1="58.42" x2="-22.86" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="2N7000" gate="G$1" pin="S"/>
@@ -4797,25 +4812,18 @@ by R. Vogg  15.March.2002</description>
 </net>
 <net name="N$18" class="0">
 <segment>
-<pinref part="RGB_LED" gate="G$1" pin="CRED"/>
 <portref moduleinst="MSP432-1" port="P2.4"/>
 <wire x1="-20.32" y1="22.86" x2="-22.86" y2="22.86" width="0.1524" layer="91"/>
-<wire x1="-22.86" y1="22.86" x2="-22.86" y2="45.72" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$19" class="0">
-<segment>
-<portref moduleinst="MSP432-1" port="P2.5"/>
-<pinref part="RGB_LED" gate="G$1" pin="CBLUE"/>
-<wire x1="-17.78" y1="22.86" x2="-17.78" y2="45.72" width="0.1524" layer="91"/>
+<pinref part="R2" gate="G$1" pin="2"/>
+<wire x1="-22.86" y1="22.86" x2="-22.86" y2="30.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$20" class="0">
 <segment>
 <portref moduleinst="MSP432-1" port="P2.6"/>
 <wire x1="-15.24" y1="22.86" x2="-12.7" y2="22.86" width="0.1524" layer="91"/>
-<pinref part="RGB_LED" gate="G$1" pin="CGREEN"/>
-<wire x1="-12.7" y1="22.86" x2="-12.7" y2="45.72" width="0.1524" layer="91"/>
+<pinref part="R4" gate="G$1" pin="2"/>
+<wire x1="-12.7" y1="22.86" x2="-12.7" y2="30.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -4886,6 +4894,34 @@ by R. Vogg  15.March.2002</description>
 <portref moduleinst="MSP432-1" port="P3.7"/>
 <wire x1="33.02" y1="-7.62" x2="35.56" y2="-7.62" width="0.1524" layer="91"/>
 <pinref part="SWITCH-TACTILE" gate="1" pin="P"/>
+</segment>
+</net>
+<net name="N$19" class="0">
+<segment>
+<pinref part="R2" gate="G$1" pin="1"/>
+<pinref part="RGB_LED" gate="G$1" pin="CRED"/>
+<wire x1="-22.86" y1="40.64" x2="-22.86" y2="48.26" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$26" class="0">
+<segment>
+<pinref part="R5" gate="G$1" pin="2"/>
+<portref moduleinst="MSP432-1" port="P2.5"/>
+<wire x1="-17.78" y1="22.86" x2="-17.78" y2="30.48" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$29" class="0">
+<segment>
+<pinref part="R5" gate="G$1" pin="1"/>
+<pinref part="RGB_LED" gate="G$1" pin="CBLUE"/>
+<wire x1="-17.78" y1="40.64" x2="-17.78" y2="48.26" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$30" class="0">
+<segment>
+<pinref part="R4" gate="G$1" pin="1"/>
+<pinref part="RGB_LED" gate="G$1" pin="CGREEN"/>
+<wire x1="-12.7" y1="40.64" x2="-12.7" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

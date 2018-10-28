@@ -1,21 +1,20 @@
 #include "msp.h"
 #include "timers.h"
 #include "keypad.h"
+#include "LCD.h"
 #include <stdio.h>
 
-/*
+/***********************************************************************
  * keypad.c
  *
  *  Created on: Oct 14, 2018
  *      Author: Richard
- */
+ **********************************************************************/
 
-
-
-/************************************************************************************
- * Initilaizes the Keypad
+/***********************************************************************
+ * Initializes the Keypad
  * Rows are P4.0-4.3 Cols 4.4-4.6
- ***********************************************************************************/
+ **********************************************************************/
 void initKeypad(){
     //set Port 4 as GPIO
     P4SEL0 = 0x00;
@@ -36,7 +35,7 @@ void initKeypad(){
  *********************************************************/
 uint8_t readKeypad(){
     uint8_t col=0, row=0;
-    int num =0;
+    int num = 0;
 
     for (col = 0; col < 3; col++){
         P4->DIR &= ~0x70;     //set all cols to input
@@ -71,8 +70,9 @@ uint8_t readKeypad(){
 
 /*********************************************************
  * Displays the key pressed to the console
+ * Used for Debugging
  *********************************************************/
-void displayKeypad(uint8_t num){
+void printKeypad(uint8_t num){
     if(num <= 9)
         printf("Output: %d\n",num);
     else if (num == 10)
@@ -85,42 +85,37 @@ void displayKeypad(uint8_t num){
         printf("unrecognized key");
 }
 
+
 /********************************************************************************
  * Collects a 3 digit pulse and returns it
  *******************************************************************************/
 uint16_t collectPulse(){
     uint16_t pulse = 0;      //PIN
     uint8_t pressed = 0;  //key pressed
-    uint8_t count = 0;     //flag
 
     while (1){
         if(pressed = readKeypad()){   //read number
-            displayKeypad(pressed);          //prints out button press
+            printKeypad(pressed);          //prints to console
+
             delay_mS(10);              //secondary bounce
-            count++;
 
             if (pressed < 10){
                 pulse = pulse * 10 + pressed;
             }
-            else if (pressed == 10){
-                printf("Please enter only digit 0-9\n");
-                count--;
-            }
+
             else if (pressed == 11){
                 pulse = pulse * 10 + 0;
-                count++;
             }
             else if (pressed == 12){
-                if (count < 3){
-                    count = 0;
-                    pressed = 0;
-                    pulse = 0;
-                }
-                else{
-                    printf("current pulse: %d \n",pulse % 100);
-                    return pulse %= 100;
-                }
+                printf("current pulse: %d \n",pulse % 100);
+                displayPulse(pulse);
+                return pulse % 100;
             }
+            else{
+                printf("Please enter only digit 0-9\n");
+                invalidKey();
+            }
+            displayDC(pulse%100);
         }
     }
 }

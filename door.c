@@ -32,6 +32,9 @@ void initDoor(){
     P6DIR  |=  0x30;    //Output
     P6OUT  &=~ 0x30;
 
+    //Start Condition
+    closeDoor();
+
  //   initAlarm();
 
 
@@ -74,7 +77,7 @@ void openDoor(){
  * 20ms period where 1ms is 0 degrees
  **********************************************************************/
 void closeDoor(){
-    TIMER_A2->CCR[4] = 3000;
+    TIMER_A2->CCR[4] = 3100;    //Slight stall at 3000 (calibration error)
     P6OUT  |=  0x20;
     P6OUT  &=~ 0x10;
 }
