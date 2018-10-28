@@ -36,7 +36,7 @@ void initKeypad(){
  *********************************************************/
 uint8_t readKeypad(){
     uint8_t col=0, row=0;
-    int num;
+    int num =0;
 
     for (col = 0; col < 3; col++){
         P4->DIR &= ~0x70;     //set all cols to input

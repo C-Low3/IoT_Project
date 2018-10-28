@@ -1,7 +1,6 @@
 # FIXED
 
 main.obj: ../main.c
-main.obj: C:/Users/Richard/workspace_v8/IoT_Project/keypad.h
 main.obj: C:/ti/ccsv8/ccs_base/arm/include/msp.h
 main.obj: C:/ti/ccsv8/ccs_base/arm/include/msp432p401r.h
 main.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/include/stdint.h
@@ -17,12 +16,14 @@ main.obj: C:/ti/ccsv8/ccs_base/arm/include/CMSIS/core_cm4.h
 main.obj: C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_compiler.h
 main.obj: C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_ccs.h
 main.obj: C:/ti/ccsv8/ccs_base/arm/include/system_msp432p401r.h
-main.obj: ../LCD.h
 main.obj: ../timers.h
-main.obj: ../myIoT_devices.h
+main.obj: ../keypad.h
+main.obj: ../LCD.h
+main.obj: ../lights.h
+main.obj: ../fan.h
+main.obj: ../door.h
 
 ../main.c: 
-C:/Users/Richard/workspace_v8/IoT_Project/keypad.h: 
 C:/ti/ccsv8/ccs_base/arm/include/msp.h: 
 C:/ti/ccsv8/ccs_base/arm/include/msp432p401r.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.3.LTS/include/stdint.h: 
@@ -38,6 +39,9 @@ C:/ti/ccsv8/ccs_base/arm/include/CMSIS/core_cm4.h:
 C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_compiler.h: 
 C:/ti/ccsv8/ccs_base/arm/include/CMSIS/cmsis_ccs.h: 
 C:/ti/ccsv8/ccs_base/arm/include/system_msp432p401r.h: 
-../LCD.h: 
 ../timers.h: 
-../myIoT_devices.h: 
+../keypad.h: 
+../LCD.h: 
+../lights.h: 
+../fan.h: 
+../door.h: 

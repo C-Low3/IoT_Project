@@ -9,16 +9,19 @@
  *      Author: Richard
  */
 
-#define RS0 P1OUT &=~ BIT7
+#define RS0 P1OUT &=~ BIT7      //Any GPIO Pin
 #define RS1 P1OUT |= BIT7
-#define E0 P1OUT &=~ BIT6
+//#define RW0 P1OUT &=~ BIT4      //Any GPIO Pin
+//#define RW1 P1OUT |= BIT4
+#define E0 P1OUT &=~ BIT6       //Any GPIO Pin
 #define E1 P1OUT |= BIT6
+#define portout P5OUT           //Data pins D4-D7 to last 4 pins of port (GPIO)
 
 /******************************************************************************
  * LCD Display
  * Displays a message to  for 5 seconds
  * Then scrolls a message across the LCD
- * RS and E pins are #define
+ * To change pins just changes the #define and initLCD
  * Authors: Richard Critchlow & Logan Dykstra
  * Version: October 2018
  *****************************************************************************/
@@ -26,9 +29,10 @@
 
 /******************************************************************************
  * Initializes the LCD
+ * To change pins just changes the #define and initLCD
  *****************************************************************************/
 void initLCD(){
-    //Set Port 5.4-5.7 to GPIO
+    //Set Port 25.4-5.7 to GPIO
     P5SEL0 &=~ 0xF0;
     P5SEL1 &=~ 0xF0;
     //Set Port 1.6-1.7 to GPIO
@@ -79,9 +83,9 @@ void pulseEnable(void){
  * Param: nib - nibble of bits to be sent to LCD
  *****************************************************************************/
 void pushNibble(uint8_t nib){
-    P5OUT &=~ 0xF0;             //clearing data/cmd pins
-    P5OUT |= (nib & 0x0F)<<4;      //Placeing mask on pins
-    pulseEnable();              //pulsing so LCD reads pins
+    portout &=~ 0xF0;             //clearing data/cmd pins
+    portout |= (nib & 0x0F)<<4;      //Placeing mask on pins
+    pulseEnable();                //pulsing so LCD reads pins
 }
 
 /******************************************************************************
@@ -186,7 +190,38 @@ void mainMenu(){
     display(" 3 Lights       ",4);
 }
 
+void doorMenu(){
+    display("    Select      ",1);
+    display(" 1 Open         ",2);
+    display(" 2 Close        ",3);
+    display("                ",4);
+}
+void motorMenu(){
+    display("Speed      0-99 ",1);
+    display("                ",2);
+    display("Followed by '#' ",3);
+    display("                ",4);
+}
+void lightsMenu(){
+    display("Select a color  ",1);
+    display(" 1 Red          ",2);
+    display(" 2 Green        ",3);
+    display(" 3 Blue         ",4);
+}
 
+void lightsMenu2(){
+    display("Brightness 0-99 ",1);
+    display("                ",2);
+    display("Followed by '#' ",3);
+    display("                ",4);
+}
+
+void invalidKey(){
+    display("Invalid Key     ",1);
+    display("                ",2);
+    display("Please enter a  ",3);
+    display("Valid Number    ",4);
+}
 
 
 

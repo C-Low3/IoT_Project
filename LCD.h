@@ -16,8 +16,17 @@ void pulseEnable(void);
 void writeCommand(uint8_t);
 void writeData(uint8_t);
 
-void mainMenu(void); //displays main menu
+
 void display(char word[], uint8_t line); //displays a String[16]
 void scroll(char word[], uint8_t line);  //Scrolls a String[16]
+
+
+void mainMenu(void); //displays main menu
+void doorMenu(void);
+void motorMenu(void);
+void lightsMenu(void);
+void lightsMenu2(void);
+void invalidKey(void);
+
 
 #endif /* LCD_H_ */

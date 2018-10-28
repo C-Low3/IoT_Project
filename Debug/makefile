@@ -11,9 +11,11 @@ GEN_CMDS__FLAG :=
 
 ORDERED_OBJS += \
 "./LCD.obj" \
+"./door.obj" \
+"./fan.obj" \
 "./keypad.obj" \
+"./lights.obj" \
 "./main.obj" \
-"./myIoT_devices.obj" \
 "./startup_msp432p401r_ccs.obj" \
 "./system_msp432p401r.obj" \
 "./timers.obj" \
@@ -160,8 +162,8 @@ IoT_Project.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "LCD.obj" "keypad.obj" "main.obj" "myIoT_devices.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" "timers.obj" 
-	-$(RM) "LCD.d" "keypad.d" "main.d" "myIoT_devices.d" "startup_msp432p401r_ccs.d" "system_msp432p401r.d" "timers.d" 
+	-$(RM) "LCD.obj" "door.obj" "fan.obj" "keypad.obj" "lights.obj" "main.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" "timers.obj" 
+	-$(RM) "LCD.d" "door.d" "fan.d" "keypad.d" "lights.d" "main.d" "startup_msp432p401r_ccs.d" "system_msp432p401r.d" "timers.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
