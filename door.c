@@ -32,35 +32,40 @@ void initDoor(){
     P6DIR  |=  0x30;    //Output
     P6OUT  &=~ 0x30;
 
+    initAlarm();
+
     //Start Condition
     closeDoor();
-
- //   initAlarm();
 
 
 }
 
-///**
-// * 5.6 and 5.7 are speakers (A
-// */
-//void initAlarm(){
-//    //Initializes the pins for the alarm
-//    P2SEL0 |=  BIT4;    //set P2 timerA
-//    P2SEL1 &=~ BIT4;
-//    P2DIR  |= BIT4;      //Output
-//    TIMER_A0->CTL = 0;
-//    TIMER_A0->CCR[0] = 50000-1;                     //500Hz
-//    TIMER_A0->CCTL[1] = TIMER_A_CCTLN_OUTMOD_7;     //Blue
-//    TIMER_A0->CCR[1] = 0;
-//    TIMER_A0->CTL = 0x0214;
-//}
-//
-//
-//void alarmSound(uint8_t dc){
-//    TIMER_A0->CCR[1] = 500*dc -1;
-//
-//
-//}
+/**
+ * 7.6 and 7.7 are speakers
+ */
+void initAlarm(){
+        //Initializes the pins for the alarm
+
+        P2SEL0 |=  BIT4;    //set P2 timerA
+        P2SEL1 &=~ BIT4;
+        P2DIR  |= BIT4;      //Output
+        TIMER_A1->CTL = 0;
+        TIMER_A1->CCR[0] = 2000-1;                     //1.5KHz
+        TIMER_A1->CCTL[1] = TIMER_A_CCTLN_OUTMOD_7;     //speaker 1
+        TIMER_A1->CCR[1] = 500;
+        TIMER_A1->CCTL[2] = TIMER_A_CCTLN_OUTMOD_7;     //speaker 2
+        TIMER_A1->CCR[2] = 500;
+        TIMER_A1->CTL = 0x0214;
+}
+
+
+void alarmSoundHigh(){
+    TIMER_A0->CCR[0] = 2000-1; //1.5Khz
+}
+
+void alarmSoundLow(){
+    TIMER_A0->CCR[0] = 2500-1; //1.2Khz
+}
 
 /***********************************************************************
  * TimerA in P6.7 (A2.4)  For Door (servo)

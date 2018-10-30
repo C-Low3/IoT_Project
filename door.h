@@ -13,6 +13,7 @@ void openDoor(void);
 void closeDoor(void);
 
 void initAlarm(void);
-void alarmSound(uint8_t);
+void alarmSoundHigh(void);
+void alarmSoundLow(void);
 
 #endif /* DOOR_H_ */

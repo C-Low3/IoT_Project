@@ -12,5 +12,7 @@ void initSystick(void);
 void delay_mS(uint16_t);
 void delay_uS(uint16_t);
 void initTimerA2_50Hz(void);
+void initTimer32(void);
+void resetTimer32(void);
 
 #endif /* TIMERS_H_ */

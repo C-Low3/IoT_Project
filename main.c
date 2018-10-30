@@ -10,16 +10,17 @@ void door(void);
 void lights(void);
 void motor(void);
 
-/**
+/*****************************************************************
  * Authors: Richard Critchlow & Logan Dykstra
  * Version: October 2018
- */
+ *****************************************************************/
 
  int main(void){
 	WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;		// stop watchdog timer
 
 	initSystick();      //Systic Timer
 	initTimerA2_50Hz(); //Timer A2
+//	initTimer32();
 	initKeypad();       //Keypad
 	initLCD();          //LCD Display
 	initLights();       //RGB Light
@@ -27,7 +28,8 @@ void motor(void);
 	initFan();          //Motor
 
     NVIC_EnableIRQ(PORT3_IRQn);
-    __enable_interrupt();
+    NVIC_EnableIRQ(T32_INT1_IRQn);
+//    __enable_interrupt();
 
     uint8_t pressed = 0;
 
@@ -119,7 +121,12 @@ void motor(){
  * Emergency stop for the Motor
  */
  void PORT3_IRQHandler(){
-     //if (P3->IFG & BIT7)  //dont believe this is neccessary
-         TIMER_A2->CCR[3]  = 0;     //Stops Motor
+     if (P3->IFG & BIT7)        //Checks to see if it was 3.7 flag
+         TIMER_A2->CCR[3]  = 0; //Stops Motor
      P3->IFG &=~ BIT7;          //Clear flag
+ }
+
+ void T32_INT1_IRQHandler(){
+     TIMER32_1->INTCLR = 0;
+     screenSaver();            //get stuck in ss
  }

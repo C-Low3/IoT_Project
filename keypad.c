@@ -37,6 +37,8 @@ uint8_t readKeypad(){
     uint8_t col=0, row=0;
     int num = 0;
 
+//    resetTimer32();
+
     for (col = 0; col < 3; col++){
         P4->DIR &= ~0x70;     //set all cols to input
         P4->DIR |= BIT(col+4);  //set current col to output
@@ -96,6 +98,7 @@ uint16_t collectPulse(){
     while (1){
         if(pressed = readKeypad()){   //read number
             printKeypad(pressed);          //prints to console
+ //           resetTimer32();
 
             delay_mS(10);              //secondary bounce
 

@@ -2,6 +2,7 @@
 #include "LCD.h"
 #include "timers.h"
 #include "string.h"
+#include "keypad.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -136,42 +137,37 @@ void screenSaver(){
     uint8_t c=0;
     uint8_t line = 0;
 
-    writeCommand(1);  //Clears the Screen
+    while(!(readKeypad())){
+        writeCommand(1);  //Clears the Screen
+        delay_uS(1000);  //clearing takes time
 
+        line = rand() % 4;      //0 - 3
+        c = rand() % 12 + 1;    //1-12
 
-    /* Intializes random number generator */
-    //srand(time(NULL));
+        writeCommand(0x0C);  //turns off Cursor
 
-    line = rand() % 4;  //0 - 3
-    c = rand() % 12 + 1;    //1-12
+        switch (line){       //moves cursor to the beginning of specified line
+        case 0:
+            line = 0x80; break;
+        case 1:
+            line = 0xC0; break;
+        case 2:
+            line = 0x90; break;
+        case 3:
+            line = 0xD0; break;
+        default:
+            break;
+        }
 
-    printf("line: %d  c: %d\n",line,c);
-
-
-
-
-    writeCommand(0x0C);  //turns off Curosr
-
-    switch (line){       //moves cursor to the beginning of specified line
-    case 0:
-        line = 0x80; break;
-    case 1:
-        line = 0xC0; break;
-    case 2:
-        line = 0x90; break;
-    case 3:
-        line = 0xD0; break;
-    default:
-        break;
-    }
-
-    writeCommand(line + c);
-    //prints word
+        writeCommand(line + c);
+        //prints word
         for (i=0;i<16;i++){
             writeData(word[i]);
             delay_uS(100);
         }
         delay_mS(1000);
+
+    }
 
 }
 

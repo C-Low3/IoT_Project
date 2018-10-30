@@ -4434,6 +4434,157 @@ by R. Vogg  15.March.2002</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="buzzer" urn="urn:adsk.eagle:library:113">
+<description>&lt;b&gt;Speakers and Buzzers&lt;/b&gt;&lt;p&gt;
+&lt;ul&gt;Distributors:
+&lt;li&gt;Buerklin
+&lt;li&gt;Spoerle
+&lt;li&gt;Schukat
+&lt;/ul&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="AL11P" library_version="1">
+<description>&lt;b&gt;SPEAKER&lt;/b&gt;</description>
+<circle x="0" y="0" radius="5.715" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="6.223" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="1.016" width="0.1524" layer="21"/>
+<pad name="-" x="-2.286" y="0" drill="1.016" diameter="1.905" shape="octagon"/>
+<pad name="+" x="2.286" y="0" drill="1.016" diameter="1.905" shape="octagon"/>
+<text x="-3.175" y="6.35" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-3.81" y="-3.175" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+</package>
+</packages>
+<symbols>
+<symbol name="SP" library_version="1">
+<wire x1="-1.905" y1="-0.635" x2="1.905" y2="-0.635" width="0.254" layer="94"/>
+<wire x1="1.905" y1="-0.635" x2="1.905" y2="0" width="0.254" layer="94"/>
+<wire x1="1.905" y1="2.54" x2="-1.905" y2="2.54" width="0.254" layer="94"/>
+<wire x1="-1.905" y1="-0.635" x2="-1.905" y2="0" width="0.254" layer="94"/>
+<wire x1="1.905" y1="2.54" x2="5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="5.08" y1="5.08" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="-1.905" y1="2.54" x2="-5.08" y2="5.08" width="0.254" layer="94"/>
+<wire x1="2.54" y1="0" x2="1.905" y2="0" width="0.1524" layer="94"/>
+<wire x1="1.905" y1="0" x2="1.905" y2="2.54" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="0" x2="-1.905" y2="0" width="0.1524" layer="94"/>
+<wire x1="-1.905" y1="0" x2="-1.905" y2="2.54" width="0.254" layer="94"/>
+<text x="-3.81" y="6.35" size="1.778" layer="95">&gt;NAME</text>
+<text x="-3.81" y="-3.175" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="2" x="5.08" y="0" visible="pad" length="short" direction="pas" rot="R180"/>
+<pin name="1" x="-5.08" y="0" visible="pad" length="short" direction="pas"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="AL11P" prefix="SP" library_version="1">
+<description>&lt;b&gt;SPEAKER&lt;/b&gt;&lt;p&gt; Source: Buerklin</description>
+<gates>
+<gate name="G$1" symbol="SP" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="AL11P">
+<connects>
+<connect gate="G$1" pin="1" pad="-"/>
+<connect gate="G$1" pin="2" pad="+"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="unknown" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+<library name="transistor-neu-to92" urn="urn:adsk.eagle:library:397">
+<description>&lt;b&gt;NPN Transistors&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="TO220" library_version="1">
+<description>&lt;b&gt;TO 220 horizontal&lt;/b&gt;</description>
+<wire x1="-5.207" y1="-1.27" x2="5.207" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="5.207" y1="14.605" x2="-5.207" y2="14.605" width="0.127" layer="21"/>
+<wire x1="5.207" y1="-1.27" x2="5.207" y2="11.176" width="0.127" layer="21"/>
+<wire x1="5.207" y1="11.176" x2="4.318" y2="11.176" width="0.127" layer="21"/>
+<wire x1="4.318" y1="11.176" x2="4.318" y2="12.7" width="0.127" layer="21"/>
+<wire x1="4.318" y1="12.7" x2="5.207" y2="12.7" width="0.127" layer="21"/>
+<wire x1="5.207" y1="12.7" x2="5.207" y2="14.605" width="0.127" layer="21"/>
+<wire x1="-5.207" y1="-1.27" x2="-5.207" y2="11.176" width="0.127" layer="21"/>
+<wire x1="-5.207" y1="11.176" x2="-4.318" y2="11.176" width="0.127" layer="21"/>
+<wire x1="-4.318" y1="11.176" x2="-4.318" y2="12.7" width="0.127" layer="21"/>
+<wire x1="-4.318" y1="12.7" x2="-5.207" y2="12.7" width="0.127" layer="21"/>
+<wire x1="-5.207" y1="12.7" x2="-5.207" y2="14.605" width="0.127" layer="21"/>
+<wire x1="-4.572" y1="-0.635" x2="4.572" y2="-0.635" width="0.0508" layer="21"/>
+<wire x1="4.572" y1="7.62" x2="4.572" y2="-0.635" width="0.0508" layer="21"/>
+<wire x1="4.572" y1="7.62" x2="-4.572" y2="7.62" width="0.0508" layer="21"/>
+<wire x1="-4.572" y1="-0.635" x2="-4.572" y2="7.62" width="0.0508" layer="21"/>
+<circle x="0" y="11.176" radius="1.8034" width="0.127" layer="21"/>
+<circle x="0" y="11.176" radius="4.191" width="0" layer="42"/>
+<circle x="0" y="11.176" radius="4.191" width="0" layer="43"/>
+<pad name="1" x="-2.54" y="-6.35" drill="1.1176" shape="long" rot="R90"/>
+<pad name="2" x="0" y="-6.35" drill="1.1176" shape="long" rot="R90"/>
+<pad name="3" x="2.54" y="-6.35" drill="1.1176" shape="long" rot="R90"/>
+<text x="-3.81" y="5.207" size="1.778" layer="25" ratio="10">&gt;NAME</text>
+<text x="-3.937" y="2.54" size="1.778" layer="27" ratio="10">&gt;VALUE</text>
+<text x="-4.445" y="7.874" size="0.9906" layer="21" ratio="12">A17,5mm</text>
+<text x="-3.175" y="0" size="1.27" layer="51" ratio="10">1</text>
+<text x="-0.635" y="0" size="1.27" layer="51" ratio="10">2</text>
+<text x="1.905" y="0" size="1.27" layer="51" ratio="10">3</text>
+<rectangle x1="2.159" y1="-4.699" x2="2.921" y2="-4.064" layer="21"/>
+<rectangle x1="-0.381" y1="-4.699" x2="0.381" y2="-4.064" layer="21"/>
+<rectangle x1="-2.921" y1="-4.699" x2="-2.159" y2="-4.064" layer="21"/>
+<rectangle x1="-3.175" y1="-4.064" x2="-1.905" y2="-1.27" layer="21"/>
+<rectangle x1="-0.635" y1="-4.064" x2="0.635" y2="-1.27" layer="21"/>
+<rectangle x1="1.905" y1="-4.064" x2="3.175" y2="-1.27" layer="21"/>
+<rectangle x1="-2.921" y1="-6.604" x2="-2.159" y2="-4.699" layer="51"/>
+<rectangle x1="-0.381" y1="-6.604" x2="0.381" y2="-4.699" layer="51"/>
+<rectangle x1="2.159" y1="-6.604" x2="2.921" y2="-4.699" layer="51"/>
+<hole x="0" y="11.176" drill="3.302"/>
+</package>
+</packages>
+<symbols>
+<symbol name="NPN" library_version="1">
+<wire x1="2.54" y1="2.54" x2="0.508" y2="1.524" width="0.1524" layer="94"/>
+<wire x1="1.778" y1="-1.524" x2="2.54" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="2.54" y1="-2.54" x2="1.27" y2="-2.54" width="0.1524" layer="94"/>
+<wire x1="1.27" y1="-2.54" x2="1.778" y2="-1.524" width="0.1524" layer="94"/>
+<wire x1="1.54" y1="-2.04" x2="0.308" y2="-1.424" width="0.1524" layer="94"/>
+<wire x1="1.524" y1="-2.413" x2="2.286" y2="-2.413" width="0.254" layer="94"/>
+<wire x1="2.286" y1="-2.413" x2="1.778" y2="-1.778" width="0.254" layer="94"/>
+<wire x1="1.778" y1="-1.778" x2="1.524" y2="-2.286" width="0.254" layer="94"/>
+<wire x1="1.524" y1="-2.286" x2="1.905" y2="-2.286" width="0.254" layer="94"/>
+<wire x1="1.905" y1="-2.286" x2="1.778" y2="-2.032" width="0.254" layer="94"/>
+<text x="-10.16" y="7.62" size="1.778" layer="95">&gt;NAME</text>
+<text x="-10.16" y="5.08" size="1.778" layer="96">&gt;VALUE</text>
+<rectangle x1="-0.254" y1="-2.54" x2="0.508" y2="2.54" layer="94"/>
+<pin name="B" x="-2.54" y="0" visible="off" length="short" direction="pas" swaplevel="1"/>
+<pin name="E" x="2.54" y="-5.08" visible="off" length="short" direction="pas" swaplevel="3" rot="R90"/>
+<pin name="C" x="2.54" y="5.08" visible="off" length="short" direction="pas" swaplevel="2" rot="R270"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="TIP31C" prefix="T" library_version="1">
+<description>&lt;b&gt;NPN TRANSISTOR&lt;/b&gt;</description>
+<gates>
+<gate name="G$1" symbol="NPN" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="TO220">
+<connects>
+<connect gate="G$1" pin="B" pad="1"/>
+<connect gate="G$1" pin="C" pad="2"/>
+<connect gate="G$1" pin="E" pad="3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -4446,13 +4597,13 @@ by R. Vogg  15.March.2002</description>
 <modules>
 <module name="MSP432" prefix="" dx="55.88" dy="35.56">
 <ports>
-<port name="P4.0" side="top" coord="25.4" direction="io"/>
-<port name="P4.1" side="top" coord="22.86" direction="io"/>
-<port name="P4.2" side="top" coord="20.32" direction="io"/>
-<port name="P4.3" side="top" coord="17.78" direction="io"/>
-<port name="P4.4" side="top" coord="15.24" direction="io"/>
-<port name="P4.5" side="top" coord="12.7" direction="io"/>
-<port name="P4.6" side="top" coord="10.16" direction="io"/>
+<port name="P4.0" side="bottom" coord="-10.16" direction="io"/>
+<port name="P4.1" side="bottom" coord="-12.7" direction="io"/>
+<port name="P4.2" side="bottom" coord="-15.24" direction="io"/>
+<port name="P4.3" side="bottom" coord="-17.78" direction="io"/>
+<port name="P4.4" side="bottom" coord="-20.32" direction="io"/>
+<port name="P4.5" side="bottom" coord="-22.86" direction="io"/>
+<port name="P4.6" side="bottom" coord="-25.4" direction="io"/>
 <port name="P1.7" side="left" coord="7.62" direction="io"/>
 <port name="P1.6" side="left" coord="5.08" direction="io"/>
 <port name="P5.4" side="left" coord="2.54" direction="io"/>
@@ -4467,6 +4618,9 @@ by R. Vogg  15.March.2002</description>
 <port name="P6.5" side="bottom" coord="22.86" direction="io"/>
 <port name="P6.4" side="bottom" coord="25.4" direction="io"/>
 <port name="P3.7" side="right" coord="-7.62" direction="io"/>
+<port name="P7.7" side="top" coord="22.86" direction="io"/>
+<port name="P7.6" side="top" coord="20.32" direction="io"/>
+<port name="P3.2" side="top" coord="2.54" direction="io"/>
 </ports>
 <variantdefs>
 </variantdefs>
@@ -4518,6 +4672,20 @@ by R. Vogg  15.March.2002</description>
 <part name="R2" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0204/5" value="100"/>
 <part name="R4" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0204/5" value="100"/>
 <part name="R5" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0204/7" value="160"/>
+<part name="SWITCH-TACTILE_2" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device=""/>
+<part name="SUPPLY9" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
+<part name="R6" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0204/5" value="100"/>
+<part name="R7" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0204/5" value="100"/>
+<part name="R8" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0204/5" value="56"/>
+<part name="R9" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="R-US_" device="0204/5" value="56"/>
+<part name="SP1" library="buzzer" library_urn="urn:adsk.eagle:library:113" deviceset="AL11P" device=""/>
+<part name="SP2" library="buzzer" library_urn="urn:adsk.eagle:library:113" deviceset="AL11P" device=""/>
+<part name="+3V2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
+<part name="+3V3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
+<part name="T4" library="transistor-neu-to92" library_urn="urn:adsk.eagle:library:397" deviceset="TIP31C" device=""/>
+<part name="SUPPLY10" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
+<part name="T1" library="transistor-neu-to92" library_urn="urn:adsk.eagle:library:397" deviceset="TIP31C" device=""/>
+<part name="SUPPLY11" library="supply2" library_urn="urn:adsk.eagle:library:372" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4535,16 +4703,18 @@ by R. Vogg  15.March.2002</description>
 <instance part="SUPPLY1" gate="GND" x="60.96" y="0"/>
 <instance part="SUPPLY2" gate="GND" x="0" y="-48.26" rot="R270"/>
 <instance part="P+1" gate="1" x="10.16" y="-40.64"/>
-<instance part="OK1" gate="G$1" x="71.12" y="15.24"/>
-<instance part="MOTOR1" gate="G$1" x="71.12" y="43.18" smashed="yes"/>
+<instance part="OK1" gate="G$1" x="71.12" y="15.24" smashed="yes">
+<attribute name="NAME" x="64.135" y="20.955" size="1.778" layer="95"/>
+</instance>
+<instance part="MOTOR1" gate="G$1" x="111.76" y="15.24" smashed="yes" rot="R180"/>
 <instance part="SERVO1" gate="G$1" x="10.16" y="-71.12" smashed="yes" rot="R180"/>
 <instance part="SUPPLY3" gate="GND" x="78.74" y="0"/>
-<instance part="+3V1" gate="G$1" x="50.8" y="43.18" rot="R90"/>
+<instance part="+3V1" gate="G$1" x="137.16" y="15.24" rot="R270"/>
 <instance part="LCD1" gate="G$1" x="-116.84" y="20.32" rot="R270"/>
 <instance part="SUPPLY4" gate="GND" x="-71.12" y="30.48" rot="R180"/>
 <instance part="P+2" gate="1" x="-55.88" y="30.48"/>
 <instance part="P1" gate="G$1" x="-63.5" y="20.32" rot="R90"/>
-<instance part="KEYPAD1" gate="G$1" x="35.56" y="48.26" rot="R270"/>
+<instance part="KEYPAD1" gate="G$1" x="-7.62" y="-35.56" rot="R180"/>
 <instance part="SUPPLY5" gate="GND" x="-71.12" y="7.62" smashed="yes" rot="R90">
 <attribute name="VALUE" x="-64.135" y="8.255" size="1.778" layer="96" rot="R180"/>
 </instance>
@@ -4579,6 +4749,36 @@ by R. Vogg  15.March.2002</description>
 <instance part="R5" gate="G$1" x="-17.78" y="35.56" smashed="yes" rot="R270">
 <attribute name="VALUE" x="-21.082" y="39.37" size="1.778" layer="96" rot="R270"/>
 </instance>
+<instance part="SWITCH-TACTILE_2" gate="1" x="2.54" y="35.56"/>
+<instance part="SUPPLY9" gate="GND" x="2.54" y="48.26" rot="R180"/>
+<instance part="R6" gate="G$1" x="40.64" y="71.12" smashed="yes" rot="R180">
+<attribute name="VALUE" x="44.45" y="74.422" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="R7" gate="G$1" x="40.64" y="53.34" smashed="yes" rot="R180">
+<attribute name="VALUE" x="44.45" y="56.642" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="R8" gate="G$1" x="53.34" y="71.12" smashed="yes" rot="R180">
+<attribute name="VALUE" x="57.15" y="74.422" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="R9" gate="G$1" x="53.34" y="53.34" smashed="yes" rot="R180">
+<attribute name="VALUE" x="57.15" y="56.642" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="SP1" gate="G$1" x="83.82" y="71.12" smashed="yes">
+<attribute name="NAME" x="80.01" y="77.47" size="1.778" layer="95"/>
+</instance>
+<instance part="SP2" gate="G$1" x="83.82" y="53.34" smashed="yes">
+<attribute name="NAME" x="80.01" y="59.69" size="1.778" layer="95"/>
+</instance>
+<instance part="+3V2" gate="G$1" x="25.4" y="71.12" rot="R90"/>
+<instance part="+3V3" gate="G$1" x="25.4" y="53.34" rot="R90"/>
+<instance part="T4" gate="G$1" x="68.58" y="50.8" smashed="yes" rot="R90">
+<attribute name="VALUE" x="68.58" y="53.34" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="SUPPLY10" gate="GND" x="93.98" y="71.12" rot="R90"/>
+<instance part="T1" gate="G$1" x="68.58" y="68.58" smashed="yes" rot="R90">
+<attribute name="VALUE" x="68.58" y="71.12" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="SUPPLY11" gate="GND" x="93.98" y="53.34" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -4670,12 +4870,26 @@ by R. Vogg  15.March.2002</description>
 <wire x1="45.72" y1="-7.62" x2="48.26" y2="-7.62" width="0.1524" layer="91"/>
 <pinref part="SUPPLY8" gate="GND" pin="GND"/>
 </segment>
+<segment>
+<pinref part="SWITCH-TACTILE_2" gate="1" pin="S"/>
+<pinref part="SUPPLY9" gate="GND" pin="GND"/>
+<wire x1="2.54" y1="40.64" x2="2.54" y2="45.72" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SP2" gate="G$1" pin="2"/>
+<pinref part="SUPPLY11" gate="GND" pin="GND"/>
+<wire x1="88.9" y1="53.34" x2="91.44" y2="53.34" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="SP1" gate="G$1" pin="2"/>
+<pinref part="SUPPLY10" gate="GND" pin="GND"/>
+<wire x1="88.9" y1="71.12" x2="91.44" y2="71.12" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="N$3" class="0">
 <segment>
 <pinref part="OK1" gate="G$1" pin="COL"/>
-<wire x1="78.74" y1="15.24" x2="88.9" y2="15.24" width="0.1524" layer="91"/>
-<wire x1="88.9" y1="15.24" x2="88.9" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="15.24" x2="93.98" y2="15.24" width="0.1524" layer="91"/>
 <pinref part="MOTOR1" gate="G$1" pin="GND"/>
 </segment>
 </net>
@@ -4691,6 +4905,17 @@ by R. Vogg  15.March.2002</description>
 <segment>
 <pinref part="MOTOR1" gate="G$1" pin="V_IN"/>
 <pinref part="+3V1" gate="G$1" pin="+3V3"/>
+<wire x1="129.54" y1="15.24" x2="134.62" y2="15.24" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="+3V3" gate="G$1" pin="+3V3"/>
+<pinref part="R7" gate="G$1" pin="2"/>
+<wire x1="27.94" y1="53.34" x2="35.56" y2="53.34" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="+3V2" gate="G$1" pin="+3V3"/>
+<pinref part="R6" gate="G$1" pin="2"/>
+<wire x1="27.94" y1="71.12" x2="35.56" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -4752,62 +4977,6 @@ by R. Vogg  15.March.2002</description>
 <wire x1="-63.5" y1="35.56" x2="-63.5" y2="22.86" width="0.1524" layer="91"/>
 <pinref part="LCD1" gate="G$1" pin="VO"/>
 <wire x1="-73.66" y1="12.7" x2="-50.8" y2="12.7" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$11" class="0">
-<segment>
-<portref moduleinst="MSP432-1" port="P4.0"/>
-<wire x1="25.4" y1="22.86" x2="25.4" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="KEYPAD1" gate="G$1" pin="1"/>
-<wire x1="25.4" y1="30.48" x2="30.48" y2="30.48" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$12" class="0">
-<segment>
-<portref moduleinst="MSP432-1" port="P4.1"/>
-<wire x1="22.86" y1="22.86" x2="22.86" y2="33.02" width="0.1524" layer="91"/>
-<pinref part="KEYPAD1" gate="G$1" pin="2"/>
-<wire x1="22.86" y1="33.02" x2="30.48" y2="33.02" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$13" class="0">
-<segment>
-<pinref part="KEYPAD1" gate="G$1" pin="3"/>
-<portref moduleinst="MSP432-1" port="P4.2"/>
-<wire x1="30.48" y1="35.56" x2="20.32" y2="35.56" width="0.1524" layer="91"/>
-<wire x1="20.32" y1="35.56" x2="20.32" y2="22.86" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$14" class="0">
-<segment>
-<pinref part="KEYPAD1" gate="G$1" pin="4"/>
-<portref moduleinst="MSP432-1" port="P4.3"/>
-<wire x1="30.48" y1="38.1" x2="17.78" y2="38.1" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="38.1" x2="17.78" y2="22.86" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$15" class="0">
-<segment>
-<pinref part="KEYPAD1" gate="G$1" pin="5"/>
-<portref moduleinst="MSP432-1" port="P4.4"/>
-<wire x1="30.48" y1="40.64" x2="15.24" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="15.24" y1="40.64" x2="15.24" y2="22.86" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$16" class="0">
-<segment>
-<pinref part="KEYPAD1" gate="G$1" pin="6"/>
-<portref moduleinst="MSP432-1" port="P4.5"/>
-<wire x1="30.48" y1="43.18" x2="12.7" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="12.7" y1="43.18" x2="12.7" y2="22.86" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$17" class="0">
-<segment>
-<pinref part="KEYPAD1" gate="G$1" pin="7"/>
-<portref moduleinst="MSP432-1" port="P4.6"/>
-<wire x1="30.48" y1="45.72" x2="10.16" y2="45.72" width="0.1524" layer="91"/>
-<wire x1="10.16" y1="45.72" x2="10.16" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$18" class="0">
@@ -4922,6 +5091,122 @@ by R. Vogg  15.March.2002</description>
 <pinref part="R4" gate="G$1" pin="1"/>
 <pinref part="RGB_LED" gate="G$1" pin="CGREEN"/>
 <wire x1="-12.7" y1="40.64" x2="-12.7" y2="48.26" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$11" class="0">
+<segment>
+<pinref part="KEYPAD1" gate="G$1" pin="7"/>
+<portref moduleinst="MSP432-1" port="P4.0"/>
+<wire x1="-10.16" y1="-30.48" x2="-10.16" y2="-22.86" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$12" class="0">
+<segment>
+<pinref part="KEYPAD1" gate="G$1" pin="6"/>
+<portref moduleinst="MSP432-1" port="P4.1"/>
+<wire x1="-12.7" y1="-30.48" x2="-12.7" y2="-22.86" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$13" class="0">
+<segment>
+<pinref part="KEYPAD1" gate="G$1" pin="5"/>
+<portref moduleinst="MSP432-1" port="P4.2"/>
+<wire x1="-15.24" y1="-30.48" x2="-15.24" y2="-22.86" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$14" class="0">
+<segment>
+<pinref part="KEYPAD1" gate="G$1" pin="4"/>
+<portref moduleinst="MSP432-1" port="P4.3"/>
+<wire x1="-17.78" y1="-30.48" x2="-17.78" y2="-22.86" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$15" class="0">
+<segment>
+<pinref part="KEYPAD1" gate="G$1" pin="3"/>
+<portref moduleinst="MSP432-1" port="P4.4"/>
+<wire x1="-20.32" y1="-30.48" x2="-20.32" y2="-22.86" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$16" class="0">
+<segment>
+<pinref part="KEYPAD1" gate="G$1" pin="2"/>
+<wire x1="-22.86" y1="-30.48" x2="-22.86" y2="-22.86" width="0.1524" layer="91"/>
+<portref moduleinst="MSP432-1" port="P4.5"/>
+</segment>
+</net>
+<net name="N$17" class="0">
+<segment>
+<pinref part="KEYPAD1" gate="G$1" pin="1"/>
+<wire x1="-25.4" y1="-30.48" x2="-25.4" y2="-22.86" width="0.1524" layer="91"/>
+<portref moduleinst="MSP432-1" port="P4.6"/>
+</segment>
+</net>
+<net name="N$31" class="0">
+<segment>
+<pinref part="SWITCH-TACTILE_2" gate="1" pin="P"/>
+<portref moduleinst="MSP432-1" port="P3.2"/>
+<wire x1="2.54" y1="22.86" x2="2.54" y2="30.48" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$32" class="0">
+<segment>
+<pinref part="R6" gate="G$1" pin="1"/>
+<pinref part="R8" gate="G$1" pin="2"/>
+<wire x1="48.26" y1="71.12" x2="45.72" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$33" class="0">
+<segment>
+<pinref part="R7" gate="G$1" pin="1"/>
+<pinref part="R9" gate="G$1" pin="2"/>
+<wire x1="48.26" y1="53.34" x2="45.72" y2="53.34" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$34" class="0">
+<segment>
+<portref moduleinst="MSP432-1" port="P7.6"/>
+<wire x1="20.32" y1="22.86" x2="20.32" y2="63.5" width="0.1524" layer="91"/>
+<pinref part="T1" gate="G$1" pin="B"/>
+<wire x1="20.32" y1="63.5" x2="68.58" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="63.5" x2="68.58" y2="66.04" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$35" class="0">
+<segment>
+<portref moduleinst="MSP432-1" port="P7.7"/>
+<wire x1="22.86" y1="22.86" x2="22.86" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="T4" gate="G$1" pin="B"/>
+<wire x1="22.86" y1="43.18" x2="68.58" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="43.18" x2="68.58" y2="48.26" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$36" class="0">
+<segment>
+<pinref part="R9" gate="G$1" pin="1"/>
+<pinref part="T4" gate="G$1" pin="C"/>
+<wire x1="58.42" y1="53.34" x2="63.5" y2="53.34" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$37" class="0">
+<segment>
+<pinref part="T4" gate="G$1" pin="E"/>
+<pinref part="SP2" gate="G$1" pin="1"/>
+<wire x1="73.66" y1="53.34" x2="78.74" y2="53.34" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$38" class="0">
+<segment>
+<pinref part="T1" gate="G$1" pin="E"/>
+<pinref part="SP1" gate="G$1" pin="1"/>
+<wire x1="73.66" y1="71.12" x2="78.74" y2="71.12" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$39" class="0">
+<segment>
+<pinref part="R8" gate="G$1" pin="1"/>
+<pinref part="T1" gate="G$1" pin="C"/>
+<wire x1="58.42" y1="71.12" x2="63.5" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

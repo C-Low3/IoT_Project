@@ -40,35 +40,26 @@ void delay_uS(uint16_t usec){
     while((SysTick->CTRL & 0x00010000)==0);
 }
 
-/**
+/***********************************************************************
  * Initializes Timer A2 as a 50Hz Timer
- */
+ ***********************************************************************/
 void initTimerA2_50Hz(){
     TIMER_A2->CTL = 0;
     TIMER_A2->CCR[0] = 60000-1;
     TIMER_A2->CTL = 0x0214;
 }
 
+/***********************************************************************
+ * Timer A1 is used for a 1 minute interupt.
+ ***********************************************************************/
+void initTimer32(){
+    TIMER32_1->CONTROL = 0xC2;
+    TIMER32_1->LOAD = 15000000-1;//10sec
+    TIMER32_1->CONTROL |= 0x20;
+}
 
-//    /***********************************************************************
-//     * Initilizes
-//     *      TimerA in P6.6 (A2.3)  For Motor
-//     *      TimerA in P6.7 (A2.4)  For Door (servo)
-//     *      TimerA in P2.4 - 2.7   (A0.1-A0.4)  For RGB Lights
-//     *      Both run at 50Hz
-//     * If changing timer pin Ax.y: Timer_Ax, CCTL[y], CCR[y]
-//     ***********************************************************************/
-//    void initTimerA_PWM(){
-//
-//        //Initializes the pins for the fan and the servo
-//        P6SEL0 |=  0xC0;    //set both pins to timerA
-//        P6SEL1 &=~ 0xC0;
-//        P6DIR  |= 0xC0;      //Output
-//        TIMER_A2->CTL = 0;
-//        TIMER_A2->CCR[0] = 60000-1;                     //20ms period
-//        TIMER_A2->CCTL[3] = TIMER_A_CCTLN_OUTMOD_7;     //Fan
-//        TIMER_A2->CCR[3] = 0;
-//        TIMER_A2->CCTL[4] = TIMER_A_CCTLN_OUTMOD_7;     //Servo
-//        TIMER_A2->CCR[4] = 0;
-//        TIMER_A2->CTL = 0x0214;
-//    }
+void resetTimer32(){
+    TIMER32_1->LOAD = 15000000-1;//10sec
+}
+
+
