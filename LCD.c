@@ -6,13 +6,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
- * LCD.c
- *Controls the LCD Screen
- *  Created on: Oct 12, 2018
- *      Author: Richard
- */
-
 #define RS0 P1OUT &=~ BIT7      //Any GPIO Pin
 #define RS1 P1OUT |= BIT7
 //#define RW0 P1OUT &=~ BIT4      //Any GPIO Pin
@@ -33,10 +26,9 @@
 
 /******************************************************************************
  * Initializes the LCD
- * To change pins just changes the #define and initLCD
  *****************************************************************************/
 void initLCD(){
-    //Set Port 25.4-5.7 to GPIO
+    //Set Port 5.4-5.7 to GPIO
     P5SEL0 &=~ 0xF0;
     P5SEL1 &=~ 0xF0;
     //Set Port 1.6-1.7 to GPIO
@@ -199,6 +191,9 @@ void display(char word[], uint8_t line){
     }
 }
 
+/************************************************************************
+ * Displays the current entered Duty Cycle to the LCD
+ ***********************************************************************/
 void displayDC(uint8_t num){
     char text[16] = "                ";
     char sNum[2];
@@ -207,6 +202,9 @@ void displayDC(uint8_t num){
     display(text, 4);
 }
 
+/************************************************************************
+ * Displays the percent power of an PWM to the LCD
+ ***********************************************************************/
 void displayPulse(uint8_t pulse){
     char text[16] = "  % Power       ";
     char sNum[2];
@@ -215,25 +213,50 @@ void displayPulse(uint8_t pulse){
     display(text, 2);
 }
 
-void mainMenu(){
-    display("      Menu      ",1);
-    display(" 1 Door         ",2);
-    display(" 2 Lights       ",3);
-    display(" 3 Motor        ",4);
+/************************************************************************
+ *
+ ************************************************************************/
+void displayPass(uint8_t pin){
+    char text[16] = "                ";
+    char star[4];
+    sprintf(star, "%4d", pin);
+    strncpy(text,star, 4);
+    display(text, 2);
 }
 
+/************************************************************************
+ * Displays the Main Menu to the LCD
+ ***********************************************************************/
+void mainMenu(){
+    display("      Menu      ",1);
+    display("1 Door    4 PIN ",2);
+    display("2 Motor   5 Arm ",3);
+    display("3 Lights  6 :)  ",4);
+}
+
+/************************************************************************
+ * Displays the Menu for the door to the LCD
+ ***********************************************************************/
 void doorMenu(){
     display("    Select      ",1);
     display(" 1 Open         ",2);
     display(" 2 Close        ",3);
     display(" * Main Menu    ",4);
 }
+
+/************************************************************************
+ * Displays the Menu for the motor to the LCD
+ ***********************************************************************/
 void motorPulseMenu(){
     display("Speed      0-99 ",1);
     display("Followed by '#' ",2);
     display("                ",3);
     display("                ",4);
 }
+
+/************************************************************************
+ * Displays the Color choices for the lights to the LCD
+ ***********************************************************************/
 void lightsMenu(){
     display("Color '*'to Exit",1);
     display(" 1 Red          ",2);
@@ -241,6 +264,9 @@ void lightsMenu(){
     display(" 3 Blue         ",4);
 }
 
+/************************************************************************
+ * Displays the Menu for the LED brightness to the LCD
+ ***********************************************************************/
 void lightsPulseMenu(){
     display("Brightness 0-99 ",1);
     display("Followed by '#' ",2);
@@ -248,6 +274,9 @@ void lightsPulseMenu(){
     display("                ",4);
 }
 
+/************************************************************************
+ * Displays an error message to the LCD for 3 seconds
+ ***********************************************************************/
 void invalidKey(){
     display("Invalid Key     ",1);
     display("                ",2);
@@ -256,6 +285,47 @@ void invalidKey(){
     delay_mS(3000);
 }
 
+/************************************************************************
+ * Displays an error message to the LCD for 3 seconds
+ ***********************************************************************/
+void invalidPIN(){
+    display("  Invalid PIN   ",1);
+    display("                ",2);
+    display("                ",3);
+    display("                ",4);
+    delay_mS(3000);
+}
+
+/************************************************************************
+ * Displays the menu for the password
+ ***********************************************************************/
+void passwordMenu(){
+    display("Enter your PIN  ",1);
+    display("                ",2);
+    display("                ",3);
+    display("                ",4);
+}
+
+void pinMenu(){
+    display("Enter new PIN   ",1);
+    display("                ",2);
+    display("                ",3);
+    display("                ",4);
+}
+
+void armMenu(){
+    display("   Security     ",1);
+    display(" 1 Arm          ",2);
+    display(" 2 Disarm       ",3);
+    display(" * Main Menu    ",4);
+}
+
+void smileMenu(){
+    display("Best part about ",1);
+    display("Switzerland?    ",2);
+    display("Not sure but the",3);
+    display("flag is a plus. ",4);
+}
 
 
 

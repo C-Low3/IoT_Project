@@ -12,5 +12,6 @@ void initLights(void);
 void pwmRed(uint8_t);
 void pwmBlue(uint8_t);
 void pwmGreen(uint8_t);
+void toggleLights(uint8_t, uint8_t, uint8_t, uint8_t);
 
 #endif /* LIGHTS_H_ */

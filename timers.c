@@ -50,7 +50,7 @@ void initTimerA2_50Hz(){
 }
 
 /***********************************************************************
- * Timer A1 is used for a 1 minute interupt.
+ * Timer A1 is used for a 1 minute interrupt.
  ***********************************************************************/
 void initTimer32(){
     TIMER32_1->CONTROL = 0xC2;
@@ -58,6 +58,9 @@ void initTimer32(){
     TIMER32_1->CONTROL |= 0x20;
 }
 
+/***********************************************************************
+ * Restarts the timer32 Load Time
+ ***********************************************************************/
 void resetTimer32(){
     TIMER32_1->LOAD = 15000000-1;//10sec
 }

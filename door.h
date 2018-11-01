@@ -15,5 +15,6 @@ void closeDoor(void);
 void initAlarm(void);
 void alarmSoundHigh(void);
 void alarmSoundLow(void);
+void alarmSoundOff(void);
 
 #endif /* DOOR_H_ */

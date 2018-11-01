@@ -98,7 +98,7 @@ uint16_t collectPulse(){
     while (1){
         if(pressed = readKeypad()){   //read number
             printKeypad(pressed);          //prints to console
- //           resetTimer32();
+//            resetTimer32();
 
             delay_mS(10);              //secondary bounce
 
@@ -110,12 +110,10 @@ uint16_t collectPulse(){
                 pulse = pulse * 10 + 0;
             }
             else if (pressed == 12){
-                printf("current pulse: %d \n",pulse % 100);
                 displayPulse(pulse);
                 return pulse % 100;
             }
             else{
-                printf("Please enter only digit 0-9\n");
                 invalidKey();
             }
             displayDC(pulse%100);
@@ -123,6 +121,49 @@ uint16_t collectPulse(){
     }
 }
 
+
+/************************************************************************
+ * Collects a 4 digit pin and returns it
+ ***********************************************************************/
+uint16_t collectPIN(){
+    uint16_t pin = 0;      //PIN
+    uint16_t pressed = 0;  //key pressed
+    uint8_t count = 0;     //flag
+
+    while (1){
+        if(pressed = readKeypad()){   //read number
+//            resetTimer32();
+            delay_mS(50);              //secondary bounce
+            count++;
+
+            if (pressed < 10){
+                pin = pin * 10 + pressed;
+            }
+            else if (pressed == 10){
+                display("Please enter    ",1);
+                display("only digits 0-9 ",2);
+                display("                ",3);
+                display("                ",4);
+                delay_mS(2000);
+                count--;
+            }
+            else if (pressed == 11){
+                pin = pin * 10 + 0;
+                count++;
+            }
+            else if (pressed == 12){
+                if (count < 5){
+                    count = 0;
+                    pressed = 0;
+                    pin = 0;
+                }
+                else
+                    return pin %= 10000;
+            }
+            displayPass(pin);
+        }
+    }
+}
 
 
 

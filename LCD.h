@@ -20,15 +20,21 @@ void writeData(uint8_t);
 void display(char word[], uint8_t line); //displays a String[16]
 void displayDC(uint8_t number);
 void displayPulse(uint8_t pulse);
+void displayPass(uint8_t pass);
 void screenSaver();
 
 
 void mainMenu(void); //displays main menu
+void pinMenu(void);
+void armMenu(void);
+void smileMenu(void);
 void doorMenu(void);
 void motorPulseMenu(void);
 void lightsMenu(void);
 void lightsPulseMenu(void);
+void passwordMenu(void);
 void invalidKey(void);
+void invalidPIN(void);
 
 
 #endif /* LCD_H_ */

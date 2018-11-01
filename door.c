@@ -32,39 +32,11 @@ void initDoor(){
     P6DIR  |=  0x30;    //Output
     P6OUT  &=~ 0x30;
 
+    //Initializes the alarm system
     initAlarm();
 
     //Start Condition
     closeDoor();
-
-
-}
-
-/**
- * 7.6 and 7.7 are speakers
- */
-void initAlarm(){
-        //Initializes the pins for the alarm
-
-        P2SEL0 |=  BIT4;    //set P2 timerA
-        P2SEL1 &=~ BIT4;
-        P2DIR  |= BIT4;      //Output
-        TIMER_A1->CTL = 0;
-        TIMER_A1->CCR[0] = 2000-1;                     //1.5KHz
-        TIMER_A1->CCTL[1] = TIMER_A_CCTLN_OUTMOD_7;     //speaker 1
-        TIMER_A1->CCR[1] = 500;
-        TIMER_A1->CCTL[2] = TIMER_A_CCTLN_OUTMOD_7;     //speaker 2
-        TIMER_A1->CCR[2] = 500;
-        TIMER_A1->CTL = 0x0214;
-}
-
-
-void alarmSoundHigh(){
-    TIMER_A0->CCR[0] = 2000-1; //1.5Khz
-}
-
-void alarmSoundLow(){
-    TIMER_A0->CCR[0] = 2500-1; //1.2Khz
 }
 
 /***********************************************************************
@@ -86,3 +58,50 @@ void closeDoor(){
     P6OUT  |=  0x20;
     P6OUT  &=~ 0x10;
 }
+
+/************************************************************************
+ * 7.6 and 7.7 are speakers
+ ***********************************************************************/
+void initAlarm(){
+        //Initializes the pins for the alarm
+
+        P7SEL0 |=  0xC0;    //set P7.6 and 7.7 as  timerA
+        P7SEL1 &=~ 0xC0;
+        P7DIR  |= 0xC0;      //Output
+        TIMER_A1->CTL = 0;
+        TIMER_A1->CCR[0] = 2000-1;                     //1.5KHz
+        TIMER_A1->CCTL[1] = TIMER_A_CCTLN_OUTMOD_7;     //speaker 1
+        TIMER_A1->CCR[1] = 0;
+        TIMER_A1->CCTL[2] = TIMER_A_CCTLN_OUTMOD_7;     //speaker 2
+        TIMER_A1->CCR[2] = 0;
+        TIMER_A1->CTL = 0x0214;
+}
+
+/************************************************************************
+ * High pitched sound from the speakers
+ * 1.5 KHz
+ ***********************************************************************/
+void alarmSoundHigh(){
+    TIMER_A1->CCR[0] = 2000-1;
+    TIMER_A1->CCR[1] = 1000-1;
+    TIMER_A1->CCR[2] = 1000-1;
+}
+
+/************************************************************************
+ * Low pitch sound from the speakers
+ * 1.2 KHz
+ ***********************************************************************/
+void alarmSoundLow(){
+    TIMER_A1->CCR[0] = 2500-1; //1.2Khz
+    TIMER_A1->CCR[1] = 1250-1;
+    TIMER_A1->CCR[2] = 1250-1;
+}
+
+/**
+ * Turns off speakers
+ */
+void alarmSoundOff(){
+    TIMER_A1->CCR[1] = 0;
+    TIMER_A1->CCR[2] = 0;
+}
+
